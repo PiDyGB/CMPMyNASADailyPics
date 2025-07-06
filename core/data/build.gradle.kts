@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -26,7 +25,6 @@ kotlin {
             implementation(projects.core.model)
             implementation(projects.core.datastore)
             implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.sqldelight.coroutines.extensions)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
         }

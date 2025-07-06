@@ -2,7 +2,7 @@ package com.pidygb.mynasadailypics.core.database.di
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import com.pidygb.mynasadailypics.core.datastore.AppDatabase
+import com.pidygb.mynasadailypics.core.database.AppDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
