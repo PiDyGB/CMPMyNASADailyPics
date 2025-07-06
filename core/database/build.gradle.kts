@@ -43,7 +43,7 @@ kotlin {
             implementation(libs.sqldelight.native.driver)
         }
         desktopMain.dependencies {
-            implementation(libs.sqldelight.driver)
+            implementation(libs.sqldelight.sqlite.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

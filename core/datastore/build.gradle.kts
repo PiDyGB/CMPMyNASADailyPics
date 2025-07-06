@@ -30,6 +30,10 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.turbine)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.test)
+            implementation(libs.sqldelight.sqlite.driver) // This should be sqldelight.sqlite.driver
         }
         desktopMain.dependencies {
             implementation(libs.kotlinx.coroutinesSwing)
