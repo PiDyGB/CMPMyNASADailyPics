@@ -1,0 +1,24 @@
+CREATE TABLE Sample (
+    date TEXT NOT NULL PRIMARY KEY,
+    explanation TEXT,
+    hdUrl TEXT,
+    mediaType TEXT,
+    serviceVersion TEXT,
+    title TEXT NOT NULL,
+    url TEXT NOT NULL
+);
+
+
+-- Inserts a new sample. If a sample with the same date already exists, it will be replaced.
+insertSample:
+INSERT OR REPLACE INTO Sample(date, explanation, hdUrl, mediaType, serviceVersion, title, url)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+-- Selects all samples from the table, ordered by date in descending order (newest first).
+selectAllSamples:
+SELECT * FROM Sample
+ORDER BY date DESC;
+
+-- Deletes all records from the Sample table.
+deleteAllSamples:
+DELETE FROM Sample;

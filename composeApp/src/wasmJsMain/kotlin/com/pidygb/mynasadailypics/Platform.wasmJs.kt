@@ -1,7 +1,0 @@
-package com.pidygb.mynasadailypics
-
-class WasmPlatform : Platform {
-    override val name: String = "Web with Kotlin/Wasm"
-}
-
-actual fun getPlatform(): Platform = WasmPlatform()

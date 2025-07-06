@@ -1,7 +1,10 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "mynasadailypics"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             mavenContent {
@@ -33,4 +36,10 @@ plugins {
 }
 
 include(":composeApp")
-include(":data:core")
+include(":core:common")
+include(":core:data")
+include(":core:datastore")
+include(":core:model")
+include(":core:network")
+include(":core:ui")
+include(":feature:pictures")
