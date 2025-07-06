@@ -1,5 +1,7 @@
 package com.pidygb.mynasadailypics.core.network.di
 
+import io.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.Napier
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -15,6 +17,11 @@ private val coreNetworkModule = module {
         HttpClient {
             install(Logging) {
                 level = LogLevel.ALL
+                logger = object : Logger {
+                    override fun log(message: String) {
+                        Napier.v(message, null, "HTTP Client")
+                    }
+                }
             }
             install(ContentNegotiation) {
                 json(json = Json { ignoreUnknownKeys = true })
@@ -27,7 +34,7 @@ private val coreNetworkModule = module {
                 }
                 contentType(ContentType.Application.Json)
             }
-        }
+        }.also { Napier.base(DebugAntilog()) }
     }
 }
 

@@ -20,6 +20,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
+            implementation(libs.napier)
             api(libs.bundles.ktor)
         }
         commonTest.dependencies {
