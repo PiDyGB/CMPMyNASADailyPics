@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pidygb.mynasadailypics.core.common.Result
 import com.pidygb.mynasadailypics.core.common.asResult
-import com.pidygb.mynasadailypics.core.data.sample.SampleRepository
+import com.pidygb.mynasadailypics.core.data.SampleRepository
 import com.pidygb.mynasadailypics.pictures.model.UiPictureItem
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map

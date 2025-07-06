@@ -1,5 +1,7 @@
 package com.pidygb.mynasadailypics.core.network.di
 
+import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSource
+import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSourceImpl
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import io.ktor.client.*
@@ -10,6 +12,8 @@ import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.koin.core.KoinApplication
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val coreNetworkModule = module {
@@ -36,6 +40,7 @@ private val coreNetworkModule = module {
             }
         }.also { Napier.base(DebugAntilog()) }
     }
+    factoryOf(::SampleRemoteDataSourceImpl) bind SampleRemoteDataSource::class
 }
 
 fun KoinApplication.coreNetworkModule() {

@@ -29,7 +29,6 @@ kotlin {
             implementation(libs.sqldelight.coroutines.extensions)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
-            implementation(libs.kotlinx.datetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
