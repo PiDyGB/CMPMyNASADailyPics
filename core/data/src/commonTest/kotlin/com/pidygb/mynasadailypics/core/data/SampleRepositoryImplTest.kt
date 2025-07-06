@@ -1,13 +1,9 @@
-package com.pidygb.mynasadailypics.core.data.sample
+package com.pidygb.mynasadailypics.core.data
 
-import com.pidygb.mynasadailypics.core.data.sample.local.SampleLocalDataSource
-import com.pidygb.mynasadailypics.core.data.sample.remote.SampleRemoteDataSource
+import com.pidygb.mynasadailypics.core.datastore.SampleLocalDataSource
 import com.pidygb.mynasadailypics.core.model.Sample
-import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.mockk
+import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSource
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

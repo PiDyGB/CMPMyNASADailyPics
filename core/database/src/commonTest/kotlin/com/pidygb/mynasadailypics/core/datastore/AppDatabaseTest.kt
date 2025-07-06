@@ -2,7 +2,7 @@ package com.pidygb.mynasadailypics.core.datastore
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
-import com.pidygb.mynasadailypics.core.datastore.AppDatabase
+import com.pidygb.mynasadailypics.core.database.AppDatabase
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
