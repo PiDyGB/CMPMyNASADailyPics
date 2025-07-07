@@ -2,7 +2,7 @@ package com.pidygb.mynasadailypics.core.data.di
 
 import com.pidygb.mynasadailypics.core.data.SampleRepository
 import com.pidygb.mynasadailypics.core.data.SampleRepositoryImpl
-import com.pidygb.mynasadailypics.core.datastore.di.coreDataStoreModule
+import com.pidygb.mynasadailypics.core.database.di.coreDatabaseModule
 import com.pidygb.mynasadailypics.core.network.di.coreNetworkModule
 import org.koin.core.KoinApplication
 import org.koin.core.module.dsl.factoryOf
@@ -17,7 +17,7 @@ private val coreDataModule = module {
 
 fun KoinApplication.coreDataModule() {
     modules(coreDataModule)
-    coreDataStoreModule()
+    coreDatabaseModule()
     coreNetworkModule()
 }
 

@@ -1,19 +1,20 @@
 package com.pidygb.mynasadailypics.core.data
 
-import com.pidygb.mynasadailypics.core.datastore.SampleLocalDataSource
+import com.pidygb.mynasadailypics.core.database.SamplesDatabaseQueries
+import com.pidygb.mynasadailypics.core.database.resetAllSamplesEntities
+import com.pidygb.mynasadailypics.core.database.selectAllSamples
 import com.pidygb.mynasadailypics.core.model.Sample
 import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 
 class SampleRepositoryImpl(
-    private val localDataSource: SampleLocalDataSource,
+    private val queries: SamplesDatabaseQueries,
     private val remoteDataSource: SampleRemoteDataSource
-): SampleRepository {
-    override val samples: Flow<List<Sample>> = localDataSource.samples
+) : SampleRepository {
+    override val samples: Flow<List<Sample>> = queries.selectAllSamples()
 
     override suspend fun getSamples() {
-        val samples = remoteDataSource.getSamples()
-        localDataSource.clearAndCreateSamples(samples)
+        queries.resetAllSamplesEntities(remoteDataSource.getSamples())
     }
 
 }

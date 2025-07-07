@@ -1,17 +1,17 @@
 package com.pidygb.mynasadailypics.core.database.di
 
-import com.pidygb.mynasadailypics.core.database.AppDatabase
+import com.pidygb.mynasadailypics.core.database.SamplesDatabase
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-internal expect val databaseFactory: Module
+internal expect val samplesDatabaseFactory: Module
 
-private val database = module {
-    single { AppDatabase(get()).appDatabaseQueries }
+private val samplesDatabaseModule = module {
+    single { SamplesDatabase(get()).samplesDatabaseQueries }
 }
 
 
 fun KoinApplication.coreDatabaseModule() {
-    modules(databaseFactory, database)
+    modules(samplesDatabaseFactory, samplesDatabaseModule)
 }
