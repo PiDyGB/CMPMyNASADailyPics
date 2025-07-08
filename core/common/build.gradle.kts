@@ -25,5 +25,9 @@ kotlin {
         desktopMain.dependencies {
             implementation(libs.kotlinx.coroutinesSwing)
         }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+        }
     }
 }
