@@ -1,22 +1,9 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
     alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "CoreNetwork"
-            isStatic = true
-        }
-    }
-
-    jvm("desktop")
-
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.model)

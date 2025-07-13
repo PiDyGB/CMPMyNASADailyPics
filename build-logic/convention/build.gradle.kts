@@ -20,7 +20,9 @@ kotlin {
 }
 
 dependencies {
-
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.compose.gradlePlugin)
 }
 
 tasks {
@@ -33,9 +35,16 @@ tasks {
 gradlePlugin {
     plugins {
 
-        /*register("jvmLibrary") {
-            id = libs.plugins.nowinandroid.jvm.library.get().pluginId
-            implementationClass = "JvmLibraryConventionPlugin"
-        }*/
+        register("kotlinMultiplatformLibrary") {
+            id = libs.plugins.mynasadailypics.kotlinMultiplatformLibrary.get().pluginId
+            implementationClass = "com.pidygb.mynasadailypics.KotlinMultiplatformLibraryConventionPlugin"
+        }
+
+        register("kotlinComposeMultiplatformLibrary") {
+            id = libs.plugins.mynasadailypics.kotlinComposeMultiplatformLibrary.get().pluginId
+            implementationClass = "com.pidygb.mynasadailypics.KotlinComposeMultiplatformLibraryConventionPlugin"
+        }
+
+
     }
 }

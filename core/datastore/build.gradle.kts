@@ -1,22 +1,8 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
 }
 
 kotlin {
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "CoreDataStore"
-            isStatic = true
-        }
-    }
-
-    jvm("desktop")
-
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.model)

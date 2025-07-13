@@ -1,10 +1,11 @@
 [versions]
-agp = "8.7.3"
+agp = "8.10.0"
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "36"
-androidx-lifecycle = "2.9.0"
-kotlin = "2.1.21"
+androidx-lifecycle = "2.9.1"
+kotlin = "2.2.0"
+compose = "1.8.2"
 kotlinx-coroutines = "1.10.2"
 ktor = "3.2.1"
 sqlDelight = "2.1.0"
@@ -43,15 +44,24 @@ sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", ver
 sqldelight-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
 sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 
+# Dependencies of the included build-logic
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+compose-gradlePlugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "compose" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeHotReload = { id = "org.jetbrains.compose.hot-reload", version = "1.0.0-alpha10" }
-composeMultiplatform = { id = "org.jetbrains.compose", version = "1.8.1" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+
+# Plugins defined by this project
+mynasadailypics-kotlinMultiplatformLibrary = { id = "mynasadailypics.kotlinMultiplatformLibrary" }
+mynasadailypics-kotlinComposeMultiplatformLibrary = { id = "mynasadailypics.kotlinComposeMultiplatformLibrary" }
 
 [bundles]
 ktor = [

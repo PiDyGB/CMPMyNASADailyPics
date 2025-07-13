@@ -1,33 +1,9 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
     alias(libs.plugins.sqldelight)
 }
 
 kotlin {
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-    }
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "CoreDatabase"
-            isStatic = true
-        }
-    }
-
-    jvm("desktop")
-
     sourceSets {
         val desktopMain by getting
         val androidUnitTest by getting
@@ -57,11 +33,6 @@ kotlin {
         }
 
     }
-}
-
-android {
-    namespace = "com.pidygb.mynasadailypics.core.database"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
 }
 
 sqldelight {
