@@ -1,10 +1,6 @@
 package com.pidygb.mynasadailypics.pictures
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -45,7 +41,7 @@ fun PictureSurface(
         )
 
         is Result.Success -> LazyColumn(
-            modifier = modifier.padding(16.dp),
+            contentPadding = WindowInsets.systemBars.asPaddingValues(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(r.data) { picture ->

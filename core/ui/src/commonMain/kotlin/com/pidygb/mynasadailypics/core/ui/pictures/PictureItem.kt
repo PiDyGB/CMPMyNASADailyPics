@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,6 +30,7 @@ fun PictureItem(
             .fillMaxWidth()
             .height(64.dp)
             .clickable(onClick = onPictureClick)
+            .padding(horizontal = 16.dp)
     ) {
         Column(Modifier.weight(1f).fillMaxHeight()) {
             Text(title, modifier = Modifier.fillMaxWidth())
