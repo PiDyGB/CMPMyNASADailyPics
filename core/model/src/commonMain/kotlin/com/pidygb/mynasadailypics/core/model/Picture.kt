@@ -1,7 +1,7 @@
 package com.pidygb.mynasadailypics.core.model
 
 
-data class Sample(
+data class Picture(
     val date: String,
     val explanation: String?,
     val hdUrl: String?,

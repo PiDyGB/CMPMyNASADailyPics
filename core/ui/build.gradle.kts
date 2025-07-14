@@ -12,8 +12,7 @@ kotlin {
         }
         commonMain.dependencies {
 
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor)
+            implementation(libs.bundles.coil)
             implementation(libs.kotlinx.coroutines.core)
 
             implementation(project.dependencies.platform(libs.koin.bom))

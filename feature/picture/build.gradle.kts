@@ -7,10 +7,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core.common)
-            implementation(projects.core.ui)
-            implementation(projects.core.data)
             implementation(projects.core.model)
+            implementation(libs.material.icons.extended)
 
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)

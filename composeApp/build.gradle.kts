@@ -38,7 +38,9 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
+            implementation(projects.core.model)
             implementation(projects.feature.pictures)
+            implementation(projects.feature.picture)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -52,6 +54,7 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.androidx.navigation.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

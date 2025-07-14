@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,18 +24,28 @@ fun PictureItem(
     title: String,
     date: String,
     url: String,
-    onPictureClick: () -> Unit
+    onPictureClick: (date: String) -> Unit
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .height(64.dp)
-            .clickable(onClick = onPictureClick)
+            .clickable { onPictureClick(date) }
             .padding(horizontal = 16.dp)
     ) {
-        Column(Modifier.weight(1f).fillMaxHeight()) {
-            Text(title, modifier = Modifier.fillMaxWidth())
-            Text(date, modifier = Modifier.fillMaxWidth())
+        Column(Modifier.weight(1f).wrapContentHeight()) {
+            Text(
+                title,
+                modifier = Modifier.fillMaxWidth(),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                date,
+                modifier = Modifier.fillMaxWidth(),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         AsyncImage(
             modifier = Modifier
@@ -42,7 +53,7 @@ fun PictureItem(
                 .aspectRatio(16f / 9f),
             model = url,
             contentScale = ContentScale.Crop,
-            contentDescription = null
+            contentDescription = title
         )
     }
 }

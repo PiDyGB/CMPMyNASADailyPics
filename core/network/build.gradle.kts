@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
-    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.mynasadailypics.kotlinxSerialization)
 }
 
 kotlin {
