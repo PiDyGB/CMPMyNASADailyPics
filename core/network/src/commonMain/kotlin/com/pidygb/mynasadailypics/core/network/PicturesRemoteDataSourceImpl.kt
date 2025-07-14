@@ -11,9 +11,9 @@ import kotlinx.datetime.format.byUnicodePattern
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
-class SampleRemoteDataSourceImpl(private val client: HttpClient) : SampleRemoteDataSource {
+class PicturesRemoteDataSourceImpl(private val client: HttpClient) : PicturesRemoteDataSource {
     @OptIn(ExperimentalTime::class, FormatStringsInDatetimeFormats::class)
-    override suspend fun getSamples(): List<Picture> = client.get("/planetary/apod") {
+    override suspend fun getPictures(): List<Picture> = client.get("/planetary/apod") {
         parameter("start_date", LocalDate.Format {
             byUnicodePattern("yyyy-MM-dd")
         }.format(Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date.minus(30, DateTimeUnit.DAY)))

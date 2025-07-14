@@ -37,7 +37,7 @@ kotlin {
 
 sqldelight {
     databases {
-        create("SamplesDatabase") {
+        create("PicturesDatabase") {
             packageName.set("com.pidygb.mynasadailypics.core.database")
         }
     }

@@ -1,4 +1,4 @@
-CREATE TABLE SampleEntity (
+CREATE TABLE PictureEntity (
     date TEXT NOT NULL PRIMARY KEY,
     explanation TEXT,
     hdUrl TEXT,
@@ -10,15 +10,15 @@ CREATE TABLE SampleEntity (
 
 
 -- Inserts a new sample. If a sample with the same date already exists, it will be replaced.
-insertSampleEntity:
-INSERT OR REPLACE INTO SampleEntity(date, explanation, hdUrl, mediaType, serviceVersion, title, url)
+insertPictureEntity:
+INSERT OR REPLACE INTO PictureEntity(date, explanation, hdUrl, mediaType, serviceVersion, title, url)
 VALUES (?, ?, ?, ?, ?, ?, ?);
 
 -- Selects all samples from the table, ordered by date in descending order (newest first).
-selectAllSamplesEntities:
-SELECT * FROM SampleEntity
+selectAllPicturesEntities:
+SELECT * FROM PictureEntity
 ORDER BY date DESC;
 
 -- Deletes all records from the Sample table.
-deleteAllSamplesEntities:
-DELETE FROM SampleEntity;
+deleteAllPicturesEntities:
+DELETE FROM PictureEntity;

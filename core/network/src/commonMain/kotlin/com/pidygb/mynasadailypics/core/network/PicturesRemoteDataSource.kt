@@ -2,6 +2,6 @@ package com.pidygb.mynasadailypics.core.network
 
 import com.pidygb.mynasadailypics.core.model.Picture
 
-interface SampleRemoteDataSource {
-    suspend fun getSamples(): List<Picture>
+interface PicturesRemoteDataSource {
+    suspend fun getPictures(): List<Picture>
 }

@@ -1,7 +1,7 @@
 package com.pidygb.mynasadailypics.core.data.di
 
-import com.pidygb.mynasadailypics.core.data.SampleRepository
-import com.pidygb.mynasadailypics.core.data.SampleRepositoryImpl
+import com.pidygb.mynasadailypics.core.data.PicturesRepository
+import com.pidygb.mynasadailypics.core.data.PicturesRepositoryImpl
 import com.pidygb.mynasadailypics.core.database.di.coreDatabaseModule
 import com.pidygb.mynasadailypics.core.network.di.coreNetworkModule
 import org.koin.core.KoinApplication
@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 
 private val coreDataModule = module {
-    factoryOf(::SampleRepositoryImpl) bind SampleRepository::class
+    factoryOf(::PicturesRepositoryImpl) bind PicturesRepository::class
 }
 
 

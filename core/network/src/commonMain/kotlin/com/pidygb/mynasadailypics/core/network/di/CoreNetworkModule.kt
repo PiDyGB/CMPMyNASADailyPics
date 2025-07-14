@@ -1,7 +1,7 @@
 package com.pidygb.mynasadailypics.core.network.di
 
-import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSource
-import com.pidygb.mynasadailypics.core.network.SampleRemoteDataSourceImpl
+import com.pidygb.mynasadailypics.core.network.PicturesRemoteDataSource
+import com.pidygb.mynasadailypics.core.network.PicturesRemoteDataSourceImpl
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import io.ktor.client.*
@@ -40,7 +40,7 @@ private val coreNetworkModule = module {
             }
         }.also { Napier.base(DebugAntilog()) }
     }
-    factoryOf(::SampleRemoteDataSourceImpl) bind SampleRemoteDataSource::class
+    factoryOf(::PicturesRemoteDataSourceImpl) bind PicturesRemoteDataSource::class
 }
 
 fun KoinApplication.coreNetworkModule() {

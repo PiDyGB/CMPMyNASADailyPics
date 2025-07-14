@@ -2,13 +2,13 @@ package com.pidygb.mynasadailypics.core.database.di
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
-import com.pidygb.mynasadailypics.core.database.SamplesDatabase
+import com.pidygb.mynasadailypics.core.database.PicturesDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import java.util.*
 
-internal actual val samplesDatabaseFactory: Module = module {
+internal actual val picturesDatabaseFactory: Module = module {
     single<SqlDriver> {
-        JdbcSqliteDriver("jdbc:sqlite:sample.db", Properties(), SamplesDatabase.Schema)
+        JdbcSqliteDriver("jdbc:sqlite:pictures.db", Properties(), PicturesDatabase.Schema)
     }
 }

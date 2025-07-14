@@ -7,8 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 
-fun SamplesDatabaseQueries.selectAllSamples(): Flow<List<Picture>> =
-    selectAllSamplesEntities { date, explanation, hdUrl, mediaType, serviceVersion, title, url ->
+fun PicturesDatabaseQueries.selectAllPictures(): Flow<List<Picture>> =
+    selectAllPicturesEntities { date, explanation, hdUrl, mediaType, serviceVersion, title, url ->
         Picture(
             date = date,
             explanation = explanation,
@@ -20,11 +20,11 @@ fun SamplesDatabaseQueries.selectAllSamples(): Flow<List<Picture>> =
         )
     }.asFlow().mapToList(Dispatchers.IO)
 
-fun SamplesDatabaseQueries.resetAllSamplesEntities(pictures: List<Picture>) {
+fun PicturesDatabaseQueries.resetAllPicturesEntities(pictures: List<Picture>) {
     transaction {
-        deleteAllSamplesEntities()
+        deleteAllPicturesEntities()
         pictures.forEach { sample ->
-            insertSampleEntity(
+            insertPictureEntity(
                 date = sample.date,
                 explanation = sample.explanation,
                 hdUrl = sample.hdUrl,

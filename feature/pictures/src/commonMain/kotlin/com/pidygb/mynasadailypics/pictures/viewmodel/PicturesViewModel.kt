@@ -4,17 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pidygb.mynasadailypics.core.common.Result
 import com.pidygb.mynasadailypics.core.common.asResult
-import com.pidygb.mynasadailypics.core.data.SampleRepository
+import com.pidygb.mynasadailypics.core.data.PicturesRepository
 import com.pidygb.mynasadailypics.core.model.Picture
 import com.pidygb.mynasadailypics.pictures.model.UiPictureItem
 import kotlinx.coroutines.flow.*
 
 class PicturesViewModel(
-    private val repository: SampleRepository
+    private val repository: PicturesRepository
 ) : ViewModel() {
 
-    val samples = repository.samples.onStart {
-        repository.getSamples()
+    val samples = repository.pictures.onStart {
+        repository.getPictures()
     }.map { samples ->
         samples.map {
             UiPictureItem(
@@ -30,7 +30,7 @@ class PicturesViewModel(
     )
 
 
-    suspend fun pictureByDate(date: String): Picture? = repository.samples.map {
+    suspend fun pictureByDate(date: String): Picture? = repository.pictures.map {
         it.firstOrNull { picture -> picture.date == date }
     }.firstOrNull()
 }
