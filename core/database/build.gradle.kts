@@ -7,6 +7,7 @@ kotlin {
     sourceSets {
         val desktopMain by getting
         val androidUnitTest by getting
+        val desktopTest by getting
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(project.dependencies.platform(libs.koin.bom))
@@ -31,7 +32,9 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
-
+        desktopTest.dependencies {
+            implementation(libs.sqldelight.driver)
+        }
     }
 }
 

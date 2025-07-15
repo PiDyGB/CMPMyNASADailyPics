@@ -20,6 +20,12 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.test)
+            implementation(libs.turbine)
+            implementation(libs.mockk)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.compose.ui.test.junit4)
         }
 
     }
