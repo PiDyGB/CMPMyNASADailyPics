@@ -3,8 +3,6 @@ package com.pidygb.mynasadailypics.core.database
 import app.cash.sqldelight.db.SqlDriver
 import kotlin.test.*
 
-internal expect fun createDriver(): SqlDriver
-
 class AppDatabaseTest {
 
     private lateinit var driver: SqlDriver

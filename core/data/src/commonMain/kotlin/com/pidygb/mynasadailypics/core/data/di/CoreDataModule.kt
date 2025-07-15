@@ -4,14 +4,21 @@ import com.pidygb.mynasadailypics.core.data.PicturesRepository
 import com.pidygb.mynasadailypics.core.data.PicturesRepositoryImpl
 import com.pidygb.mynasadailypics.core.database.di.coreDatabaseModule
 import com.pidygb.mynasadailypics.core.network.di.coreNetworkModule
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import org.koin.core.KoinApplication
-import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 
 private val coreDataModule = module {
-    factoryOf(::PicturesRepositoryImpl) bind PicturesRepository::class
+    factory {
+        PicturesRepositoryImpl(
+            queries = get(),
+            remoteDataSource = get(),
+            context = Dispatchers.IO
+        )
+    } bind PicturesRepository::class
 }
 
 
