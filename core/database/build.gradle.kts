@@ -7,6 +7,13 @@ kotlin {
     sourceSets {
         val desktopMain by getting
         val androidUnitTest by getting
+        androidMain.dependencies {
+            implementation(libs.sqldelight.android.driver)
+        }
+        androidUnitTest.dependencies {
+            implementation(libs.sqldelight.driver)
+        }
+
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(project.dependencies.platform(libs.koin.bom))
@@ -15,23 +22,18 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.sqldelight.coroutines.extensions)
         }
-        androidMain.dependencies {
-            implementation(libs.sqldelight.android.driver)
-        }
-        androidUnitTest.dependencies {
-            implementation(libs.sqldelight.driver)
-        }
-        nativeMain.dependencies {
-            implementation(libs.sqldelight.native.driver)
-        }
-        desktopMain.dependencies {
-            implementation(libs.sqldelight.driver)
-            implementation(libs.kotlinx.coroutinesSwing)
-        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
 
+        nativeMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
+        }
+
+        desktopMain.dependencies {
+            implementation(libs.sqldelight.driver)
+            implementation(libs.kotlinx.coroutinesSwing)
+        }
     }
 }
 
