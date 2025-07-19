@@ -6,8 +6,8 @@ plugins {
 
 group = "com.pidygb.mynasadailypics.buildlogic"
 
-// Configure the build-logic plugins to target JDK 17
-// This matches the JDK used to build the project, and is not related to what is running on device.
+// Configure the build-logic plugins to focus on JDK 17
+// This matches the JDK used to build the project and is not related to what is running on a device.
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -43,6 +43,11 @@ gradlePlugin {
         register("kotlinComposeMultiplatformLibrary") {
             id = libs.plugins.mynasadailypics.kotlinComposeMultiplatformLibrary.get().pluginId
             implementationClass = "com.pidygb.mynasadailypics.KotlinComposeMultiplatformLibraryConventionPlugin"
+        }
+
+        register("kotlinMultiplatformTest") {
+            id = libs.plugins.mynasadailypics.kotlinMultiplatformTest.get().pluginId
+            implementationClass = "com.pidygb.mynasadailypics.KotlinMultiplatformTestConventionPlugin"
         }
 
         register("kotlinSerialization") {

@@ -1,8 +1,21 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+import org.jetbrains.kotlin.konan.target.Family
+
 plugins {
     alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
+    alias(libs.plugins.mokkery)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformTest)
 }
 
 kotlin {
+
+    targets.withType<KotlinNativeTarget>().configureEach {
+        if (konanTarget.family == Family.IOS) {
+            binaries.getTest(NativeBuildType.DEBUG).linkerOpts.add("-lsqlite3")
+        }
+    }
+
     sourceSets {
         val desktopMain by getting
         commonMain.dependencies {
@@ -15,10 +28,14 @@ kotlin {
             implementation(libs.koin.core)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(projects.core.testing)
         }
         desktopMain.dependencies {
             implementation(libs.kotlinx.coroutinesSwing)
         }
     }
+}
+
+dependencies {
+    implementation(libs.mokkery)
 }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
     alias(libs.plugins.mynasadailypics.kotlinComposeMultiplatformLibrary)
     alias(libs.plugins.mynasadailypics.kotlinxSerialization)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformTest)
 }
 
 kotlin {
@@ -20,9 +21,5 @@ kotlin {
             implementation(libs.bundles.coil)
             implementation(libs.androidx.navigation.compose)
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
-
     }
 }

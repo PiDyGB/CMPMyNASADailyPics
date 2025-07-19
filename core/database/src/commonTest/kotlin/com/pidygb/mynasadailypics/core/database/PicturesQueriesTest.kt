@@ -2,6 +2,7 @@ package com.pidygb.mynasadailypics.core.database
 
 import app.cash.sqldelight.db.SqlDriver
 import com.pidygb.mynasadailypics.core.model.Picture
+import com.pidygb.mynasadailypics.core.testing.createDriver
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
@@ -13,7 +14,7 @@ class PicturesQueriesTest {
 
     @BeforeTest
     fun setup() {
-        driver = createDriver()
+        driver = createDriver(PicturesDatabase.Schema)
         queries = PicturesDatabase(driver).picturesDatabaseQueries
     }
 

@@ -8,7 +8,7 @@ import org.koin.dsl.module
 internal expect val picturesDatabaseFactory: Module
 
 private val picturesDatabaseModule = module {
-    single { PicturesDatabase(get()).picturesDatabaseQueries }
+    single { PicturesDatabase(get()) }
 }
 
 

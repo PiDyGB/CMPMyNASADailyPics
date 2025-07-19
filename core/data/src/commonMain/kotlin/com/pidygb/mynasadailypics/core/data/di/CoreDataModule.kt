@@ -14,7 +14,7 @@ import org.koin.dsl.module
 private val coreDataModule = module {
     factory {
         PicturesRepositoryImpl(
-            queries = get(),
+            database = get(),
             remoteDataSource = get(),
             context = Dispatchers.IO
         )

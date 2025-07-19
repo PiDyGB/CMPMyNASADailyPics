@@ -1,19 +1,15 @@
 plugins {
     alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformTest)
 }
 
 kotlin {
     sourceSets {
         val desktopMain by getting
-        val androidUnitTest by getting
         androidMain.dependencies {
             implementation(libs.sqldelight.android.driver)
         }
-        androidUnitTest.dependencies {
-            implementation(libs.sqldelight.driver)
-        }
-
         commonMain.dependencies {
             implementation(projects.core.model)
             implementation(project.dependencies.platform(libs.koin.bom))
@@ -23,8 +19,7 @@ kotlin {
             implementation(libs.sqldelight.coroutines.extensions)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
-            implementation(libs.kotlinx.coroutines.test)
+            implementation(projects.core.testing)
         }
 
         nativeMain.dependencies {

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.mynasadailypics.kotlinMultiplatformLibrary)
     alias(libs.plugins.mynasadailypics.kotlinComposeMultiplatformLibrary)
+    alias(libs.plugins.mynasadailypics.kotlinMultiplatformTest)
 }
 
 kotlin {
@@ -29,9 +30,6 @@ kotlin {
             // Ktor client dependency required for JVM/Desktop
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutinesSwing)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
         }
     }
 }

@@ -10,6 +10,7 @@ kotlinx-coroutines = "1.10.2"
 ktor = "3.2.1"
 sqlDelight = "2.1.0"
 coil = "3.2.0"
+mokkery = "2.9.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -17,6 +18,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version = "1.7.3" }
+
 napier = { module = "io.github.aakira:napier", version = "2.7.1" }
 
 androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version = "2.9.0-beta03" }
@@ -44,11 +46,14 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.7.0" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.9.0" }
+
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqldelight-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
 sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
+
+mokkery = { module = "dev.mokkery:mokkery-gradle", version.ref = "mokkery" }
 
 # Dependencies of the included build-logic
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -64,10 +69,12 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
 
 # Plugins defined by this project
 mynasadailypics-kotlinMultiplatformLibrary = { id = "mynasadailypics.kotlinMultiplatformLibrary" }
 mynasadailypics-kotlinComposeMultiplatformLibrary = { id = "mynasadailypics.kotlinComposeMultiplatformLibrary" }
+mynasadailypics-kotlinMultiplatformTest = { id = "mynasadailypics.kotlinMultiplatformTest" }
 mynasadailypics-kotlinxSerialization = { id = "mynasadailypics.kotlinSerialization" }
 
 [bundles]
