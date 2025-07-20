@@ -19,10 +19,11 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformLibrary"))
             alias(libs.findPlugin("composeMultiplatform"))
             alias(libs.findPlugin("composeCompiler"))
             alias(libs.findPlugin("composeHotReload"))
+            alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformLibrary"))
+            alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformTest"))
             val composeDeps = extensions.getByType(ComposeExtension::class.java).dependencies
             extensions.configure<KotlinMultiplatformExtension> {
                 sourceSets {

@@ -43,6 +43,13 @@ class KotlinMultiplatformLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 namespace = "com.pidygb.mynasadailypics." + path.split(":").drop(1).joinToString(".")
                 compileSdk = libs.findVersion("android-compileSdk").get().toString().toInt()
+                defaultConfig {
+                    minSdk = libs.findVersion("android-minSdk").get().toString().toInt()
+                }
+
+                testOptions {
+                    targetSdk = libs.findVersion("android-targetSdk").get().toString().toInt()
+                }
             }
         }
     }
