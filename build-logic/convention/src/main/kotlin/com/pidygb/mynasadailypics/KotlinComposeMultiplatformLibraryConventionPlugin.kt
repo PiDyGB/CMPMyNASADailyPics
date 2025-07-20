@@ -2,6 +2,7 @@
 
 package com.pidygb.mynasadailypics
 
+import com.android.build.api.dsl.LibraryExtension
 import com.pidygb.mynasadailypics.ext.alias
 import com.pidygb.mynasadailypics.ext.libs
 import org.gradle.api.Plugin
@@ -10,11 +11,15 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.invoke
 import org.jetbrains.compose.ComposeExtension
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformLibrary"))
             alias(libs.findPlugin("composeMultiplatform"))
             alias(libs.findPlugin("composeCompiler"))
             alias(libs.findPlugin("composeHotReload"))
@@ -27,11 +32,39 @@ class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
                         implementation(composeDeps.components.resources)
                         implementation(composeDeps.components.uiToolingPreview)
                     }
+                    commonTest.dependencies {
+                        @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                        implementation(composeDeps.uiTest)
+                    }
+
+                    // Adds the desktop test dependency
+                    findByName("desktopTest")?.dependencies {
+                        implementation(composeDeps.desktop.currentOs)
+                    }
+                }
+                androidTarget {
+                    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+                    compilerOptions {
+                        jvmTarget.set(JvmTarget.JVM_11)
+                    }
+                    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+                    instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+
+                    dependencies {
+                        "androidTestImplementation"(composeDeps.desktop.uiTestJUnit4)
+                        "debugImplementation"(libs.findLibrary("androidx-uiTestManifest").get())
+                    }
                 }
                 dependencies {
                     "debugImplementation"(composeDeps.uiTooling)
                 }
             }
+            extensions.configure<LibraryExtension> {
+                defaultConfig {
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
+            }
+
         }
     }
 }
