@@ -13,7 +13,7 @@ class PicturesViewModel(
     private val repository: PicturesRepository
 ) : ViewModel() {
 
-    val samples = repository.pictures.onStart {
+    val pictures = repository.pictures.onStart {
         repository.getPictures()
     }.map { samples ->
         samples.map {

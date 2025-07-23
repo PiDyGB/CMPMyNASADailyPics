@@ -11,12 +11,12 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
-import org.koin.core.KoinApplication
+import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-private val coreNetworkModule = module {
+private val httpClientModule = module {
     single {
         HttpClient {
             install(Logging) {
@@ -43,6 +43,6 @@ private val coreNetworkModule = module {
     factoryOf(::PicturesRemoteDataSourceImpl) bind PicturesRemoteDataSource::class
 }
 
-fun KoinApplication.coreNetworkModule() {
-    modules(coreNetworkModule)
+fun Module.includesCoreNetworkModule() {
+    includes(httpClientModule)
 }

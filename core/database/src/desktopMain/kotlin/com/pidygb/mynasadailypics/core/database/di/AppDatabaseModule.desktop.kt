@@ -7,7 +7,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import java.util.*
 
-internal actual val picturesDatabaseFactory: Module = module {
+internal actual val picturesDatabaseDriver: Module = module {
     single<SqlDriver> {
         JdbcSqliteDriver("jdbc:sqlite:pictures.db", Properties(), PicturesDatabase.Schema)
     }

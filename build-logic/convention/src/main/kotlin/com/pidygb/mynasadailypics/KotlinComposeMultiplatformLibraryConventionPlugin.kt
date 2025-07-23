@@ -2,7 +2,6 @@
 
 package com.pidygb.mynasadailypics
 
-import com.android.build.api.dsl.LibraryExtension
 import com.pidygb.mynasadailypics.ext.alias
 import com.pidygb.mynasadailypics.ext.libs
 import org.gradle.api.Plugin
@@ -14,7 +13,6 @@ import org.jetbrains.compose.ComposeExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -23,7 +21,7 @@ class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
             alias(libs.findPlugin("composeCompiler"))
             alias(libs.findPlugin("composeHotReload"))
             alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformLibrary"))
-            alias(libs.findPlugin("mynasadailypics-kotlinMultiplatformTest"))
+
             val composeDeps = extensions.getByType(ComposeExtension::class.java).dependencies
             extensions.configure<KotlinMultiplatformExtension> {
                 sourceSets {
@@ -32,15 +30,13 @@ class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
                         implementation(composeDeps.material3)
                         implementation(composeDeps.components.resources)
                         implementation(composeDeps.components.uiToolingPreview)
-                    }
-                    commonTest.dependencies {
-                        @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                        implementation(composeDeps.uiTest)
-                    }
 
-                    // Adds the desktop test dependency
-                    findByName("desktopTest")?.dependencies {
-                        implementation(composeDeps.desktop.currentOs)
+
+                        implementation(dependencies.platform(libs.findLibrary("koin-bom").get()))
+                        implementation(libs.findLibrary("koin-core").get())
+                        implementation(libs.findLibrary("koin-compose").get())
+                        implementation(libs.findLibrary("koin-compose-viewmodel").get())
+                        implementation(libs.findLibrary("koin-compose-viewmodel-navigation").get())
                     }
                 }
                 androidTarget {
@@ -48,24 +44,11 @@ class KotlinComposeMultiplatformLibraryConventionPlugin : Plugin<Project> {
                     compilerOptions {
                         jvmTarget.set(JvmTarget.JVM_11)
                     }
-                    @OptIn(ExperimentalKotlinGradlePluginApi::class)
-                    instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-
-                    dependencies {
-                        "androidTestImplementation"(composeDeps.desktop.uiTestJUnit4)
-                        "debugImplementation"(libs.findLibrary("androidx-uiTestManifest").get())
-                    }
                 }
                 dependencies {
                     "debugImplementation"(composeDeps.uiTooling)
                 }
             }
-            extensions.configure<LibraryExtension> {
-                defaultConfig {
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                }
-            }
-
         }
     }
 }

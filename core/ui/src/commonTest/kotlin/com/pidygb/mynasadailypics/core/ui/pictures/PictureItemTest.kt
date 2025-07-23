@@ -21,6 +21,7 @@ class PictureItemTest {
                 title = title,
                 date = date,
                 url = url,
+                imageError = null,
                 onPictureClick = {}
             )
         }
@@ -42,6 +43,7 @@ class PictureItemTest {
                 title = title,
                 date = date,
                 url = url,
+                imageError = null,
                 onPictureClick = {}
             )
         }
@@ -63,6 +65,7 @@ class PictureItemTest {
                 title = title,
                 date = date,
                 url = url,
+                imageError = null,
                 onPictureClick = {}
             )
         }
@@ -85,6 +88,7 @@ class PictureItemTest {
                 title = title,
                 date = date,
                 url = url,
+                imageError = null,
                 onPictureClick = { clickedDate = it }
             )
         }

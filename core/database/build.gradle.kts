@@ -18,9 +18,6 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.sqldelight.coroutines.extensions)
         }
-        commonTest.dependencies {
-            implementation(projects.core.testing)
-        }
 
         nativeMain.dependencies {
             implementation(libs.sqldelight.native.driver)

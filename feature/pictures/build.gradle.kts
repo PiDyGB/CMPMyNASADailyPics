@@ -1,10 +1,21 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+import org.jetbrains.kotlin.konan.target.Family
+
 plugins {
     alias(libs.plugins.mynasadailypics.kotlinComposeMultiplatformLibrary)
     alias(libs.plugins.mynasadailypics.kotlinxSerialization)
-    alias(libs.plugins.mynasadailypics.kotlinMultiplatformTest)
+    alias(libs.plugins.mynasadailypics.kotlinComposeMultiplatformTest)
 }
 
 kotlin {
+
+    targets.withType<KotlinNativeTarget>().configureEach {
+        if (konanTarget.family == Family.IOS) {
+            binaries.getTest(NativeBuildType.DEBUG).linkerOpts.add("-lsqlite3")
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core.common)
@@ -12,11 +23,8 @@ kotlin {
             implementation(projects.core.data)
             implementation(projects.core.model)
 
-            implementation(project.dependencies.platform(libs.koin.bom))
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.material.icons.extended)
+
             implementation(libs.bundles.coil)
             implementation(libs.androidx.navigation.compose)
         }

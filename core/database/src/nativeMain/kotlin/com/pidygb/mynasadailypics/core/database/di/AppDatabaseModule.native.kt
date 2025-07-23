@@ -6,7 +6,7 @@ import com.pidygb.mynasadailypics.core.database.PicturesDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-internal actual val picturesDatabaseFactory: Module = module {
+internal actual val picturesDatabaseDriver: Module = module {
     single<SqlDriver> {
         NativeSqliteDriver(PicturesDatabase.Schema, "launch.db")
     }
