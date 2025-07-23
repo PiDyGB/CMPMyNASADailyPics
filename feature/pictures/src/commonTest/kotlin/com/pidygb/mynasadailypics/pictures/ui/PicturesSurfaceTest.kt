@@ -1,4 +1,4 @@
-package com.pidygb.mynasadailypics.pictures
+package com.pidygb.mynasadailypics.pictures.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.CompositionLocalProvider
@@ -12,6 +12,9 @@ import com.pidygb.mynasadailypics.core.model.Picture
 import com.pidygb.mynasadailypics.core.testing.SetupApplication
 import com.pidygb.mynasadailypics.core.ui.pictures.PICTURE_ITEM_IMAGE_TEST_TAG
 import com.pidygb.mynasadailypics.core.ui.pictures.PICTURE_ITEM_TEST_TAG
+import com.pidygb.mynasadailypics.pictures.PICTURES_LIST_TEST_TAG
+import com.pidygb.mynasadailypics.pictures.PICTURES_SURFACE_TEST_TAG
+import com.pidygb.mynasadailypics.pictures.PicturesSurface
 import com.pidygb.mynasadailypics.pictures.di.picturesModule
 import dev.mokkery.answering.returns
 import dev.mokkery.every
@@ -139,7 +142,7 @@ class PicturesSurfaceTest : KoinTest {
                     LocalViewModelStoreOwner provides testViewModelStoreOwner
                 ) {
                     PicturesSurface(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier.Companion.fillMaxSize(),
                         onPictureClick = {}
                     )
                 }

@@ -1,8 +1,10 @@
-package com.pidygb.mynasadailypics.picture
+package com.pidygb.mynasadailypics.picture.ui
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.*
 import coil3.annotation.ExperimentalCoilApi
+import com.pidygb.mynasadailypics.picture.PICTURE_SCREEN_TEST_TAG
+import com.pidygb.mynasadailypics.picture.PictureSurface
 import com.pidygb.mynasadailypics.picture.model.UiPictureItem
 import kotlin.test.Test
 

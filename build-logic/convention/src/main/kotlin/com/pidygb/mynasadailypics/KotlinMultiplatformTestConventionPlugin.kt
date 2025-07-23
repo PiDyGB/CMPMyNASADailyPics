@@ -2,6 +2,7 @@
 
 package com.pidygb.mynasadailypics
 
+import com.android.build.gradle.BaseExtension
 import com.pidygb.mynasadailypics.ext.alias
 import com.pidygb.mynasadailypics.ext.libs
 import org.gradle.api.Plugin
@@ -27,6 +28,15 @@ class KotlinMultiplatformTestConventionPlugin : Plugin<Project> {
                     }
                     findByName("desktopTest")?.dependencies {
                         implementation(libs.findLibrary("kotlinx-coroutinesSwing").get())
+                    }
+                }
+            }
+            extensions.configure<BaseExtension> {
+                testOptions {
+                    unitTests {
+                        all {
+                            it.exclude("**/ui/**")
+                        }
                     }
                 }
             }
